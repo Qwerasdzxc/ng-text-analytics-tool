@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ConfigService } from 'src/app/services/config.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'text-analytics-tool';
+
+  constructor(private configService: ConfigService) {}
+
+  getToken() {
+    return this.configService.getToken();
+  }
+  
 }
