@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ConfigurationComponent } from './components/configuration/configuration.component';
 import { HomeComponent } from './components/home/home.component';
+import { TextSimilarityComponent } from './components/text-similarity/text-similarity.component';
 
 const routes: Routes = [
   {
@@ -11,6 +12,10 @@ const routes: Routes = [
   {
     path: "configuration",
     component: ConfigurationComponent
+  },
+  {
+    path: "text-similarity",
+    component: TextSimilarityComponent
   }
 ];
 
