@@ -9,6 +9,8 @@ import { ConfigurationComponent } from './components/configuration/configuration
 import { HomeComponent } from './components/home/home.component';
 import { TextSimilarityComponent } from './components/text-similarity/text-similarity.component';
 import { LanguageDetectionComponent } from './components/language-detection/language-detection.component';
+import { SentimentAnalysisComponent } from './components/sentiment-analysis/sentiment-analysis.component';
+import { EntityExtractionComponent } from './components/entity-extraction/entity-extraction.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { LanguageDetectionComponent } from './components/language-detection/lang
     ConfigurationComponent,
     HomeComponent,
     TextSimilarityComponent,
-    LanguageDetectionComponent
+    LanguageDetectionComponent,
+    SentimentAnalysisComponent,
+    EntityExtractionComponent
   ],
   imports: [
     BrowserModule,

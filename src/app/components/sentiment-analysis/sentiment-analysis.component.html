@@ -1,0 +1,26 @@
+<div>
+    <h3>Sentiment Analysis</h3>
+  
+    <div>
+      <form (submit)="submitData()" class="mb-5">
+        <div class="form-group mb-2">
+          <label for="text">Text:</label>
+          <textarea class="form-control" id="text" name="text" placeholder="Text" rows="6" [(ngModel)]="text"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="language">Select text language</label>
+            <select class="form-control" name="language" id="language" [(ngModel)]="language">
+                <option>Auto</option>
+                <option>English</option>
+                <option>Italian</option>
+            </select>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+
+    <div *ngIf="result.length > 0;">
+      <h4 [style]="{color: resultColor}">Sentiment: {{ result }}</h4>
+    </div>
+</div>

@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { TextSimilarityResult } from '../model';
+import { LanguageDetectionResult, SentimentAnalysisResult, TextSimilarityResult } from '../model';
 import { ConfigService } from './config.service';
 
 @Injectable({
@@ -28,6 +28,38 @@ export class RestService {
           text1: text1,
           text2: text2,
           lang: 'en',
+          token: this.configService.getToken(),
+        },
+      }
+    );
+  }
+
+  submitLanguageDetection(
+    text: string,
+    clean: boolean
+  ): Observable<LanguageDetectionResult> {
+    return this.httpClient.get<LanguageDetectionResult>(
+      `${this.apiUrl}/datatxt/li/v1/`,
+      {
+        params: {
+          text: text,
+          clean: clean,
+          token: this.configService.getToken(),
+        },
+      }
+    );
+  }
+
+  submitSentimentAnalysis(
+    text: string,
+    lang: string
+  ): Observable<SentimentAnalysisResult> {
+    return this.httpClient.get<SentimentAnalysisResult>(
+      `${this.apiUrl}/datatxt/sent/v1/`,
+      {
+        params: {
+          text: text,
+          lang: lang,
           token: this.configService.getToken(),
         },
       }
