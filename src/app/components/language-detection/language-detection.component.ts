@@ -27,7 +27,6 @@ export class LanguageDetectionComponent implements OnInit {
     ).subscribe(result => {
       this.result = '';
       result.detectedLangs.forEach(resultItem => {
-        console.log(resultItem);
         this.result += `${resultItem.lang} with ${resultItem.confidence.toFixed(2)} confidence.\n\n`
       });
     });

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './components/app/app.component';
 import { ConfigurationComponent } from './components/configuration/configuration.component';
@@ -11,6 +11,8 @@ import { TextSimilarityComponent } from './components/text-similarity/text-simil
 import { LanguageDetectionComponent } from './components/language-detection/language-detection.component';
 import { SentimentAnalysisComponent } from './components/sentiment-analysis/sentiment-analysis.component';
 import { EntityExtractionComponent } from './components/entity-extraction/entity-extraction.component';
+import { MyInterceptor } from './interceptor';
+import { HistoryComponent } from './components/history/history.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,8 @@ import { EntityExtractionComponent } from './components/entity-extraction/entity
     TextSimilarityComponent,
     LanguageDetectionComponent,
     SentimentAnalysisComponent,
-    EntityExtractionComponent
+    EntityExtractionComponent,
+    HistoryComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +31,11 @@ import { EntityExtractionComponent } from './components/entity-extraction/entity
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS, useClass: MyInterceptor, multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

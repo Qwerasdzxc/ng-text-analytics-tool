@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { LanguageDetectionResult, SentimentAnalysisResult, TextSimilarityResult } from '../model';
+import { EntityExtractionResult, LanguageDetectionResult, SentimentAnalysisResult, TextSimilarityResult } from '../model';
 import { ConfigService } from './config.service';
 
 @Injectable({
@@ -60,6 +60,24 @@ export class RestService {
         params: {
           text: text,
           lang: lang,
+          token: this.configService.getToken(),
+        },
+      }
+    );
+  }
+
+  submitEntityExtraction(
+    text: string,
+    minConfidence: number,
+    include: string
+  ): Observable<EntityExtractionResult> {
+    return this.httpClient.get<EntityExtractionResult>(
+      `${this.apiUrl}/datatxt/nex/v1/`,
+      {
+        params: {
+          text: text,
+          min_confidence: minConfidence,
+          include: include,
           token: this.configService.getToken(),
         },
       }

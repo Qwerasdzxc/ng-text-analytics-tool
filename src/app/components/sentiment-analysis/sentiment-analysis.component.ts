@@ -28,7 +28,7 @@ export class SentimentAnalysisComponent implements OnInit {
       this.text, this.langMap[this.language]
     ).subscribe(result => {
       this.result = `Sentiment is ${result.sentiment.type} with ${result.sentiment.score} score.`;
-      this.resultColor = this.lerpColor('#FF0000', '#00FF00', 0.5);
+      this.resultColor = this.lerpColor('#FF0000', '#00FF00', (result.sentiment.score - -1) / (1 - -1));
     });
   }
 
